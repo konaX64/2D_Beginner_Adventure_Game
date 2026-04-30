@@ -2,7 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-
 public class EnemyController : MonoBehaviour
 {
     // Public variables
@@ -12,6 +11,7 @@ public class EnemyController : MonoBehaviour
 
     // Private variables
     Rigidbody2D rigidbody2d;
+    Animator animator;
     float timer;
     int direction = 1;
 
@@ -20,13 +20,13 @@ public class EnemyController : MonoBehaviour
     void Start()
     {
         rigidbody2d = GetComponent<Rigidbody2D>();
+        animator = GetComponent<Animator>();
         timer = changeTime;
+
     }
 
-    // Update is called every frame
     void Update()
     {
-
         timer -= Time.deltaTime;
 
 
@@ -37,6 +37,7 @@ public class EnemyController : MonoBehaviour
         }
     }
 
+
     // FixedUpdate has the same call rate as the physics system
     void FixedUpdate()
     {
@@ -45,24 +46,30 @@ public class EnemyController : MonoBehaviour
         if (vertical)
         {
             position.y = position.y + speed * direction * Time.deltaTime;
+            animator.SetFloat("Move X", 0);
+            animator.SetFloat("Move Y", direction);
         }
         else
         {
             position.x = position.x + speed * direction * Time.deltaTime;
+            animator.SetFloat("Move X", direction);
+            animator.SetFloat("Move Y", 0);
         }
 
 
         rigidbody2d.MovePosition(position);
     }
 
+
     void OnTriggerEnter2D(Collider2D other)
     {
         PlayerController player = other.gameObject.GetComponent<PlayerController>();
-        
-        
+
+
         if (player != null)
         {
             player.ChangeHealth(-1);
         }
     }
+
 }

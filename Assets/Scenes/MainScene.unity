@@ -2302,6 +2302,7 @@ GameObject:
   - component: {fileID: 1159047131}
   - component: {fileID: 1159047130}
   - component: {fileID: 1159047134}
+  - component: {fileID: 1159047135}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Untagged
@@ -2463,6 +2464,27 @@ MonoBehaviour:
   speed: 1
   vertical: 1
   changeTime: 3
+--- !u!95 &1159047135
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1159047129}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 14dda6e0a5719414b8005d2f4e98b12d, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &1174147099
 GameObject:
   m_ObjectHideFlags: 0
@@ -3483,14 +3505,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1891597111679773877, guid: a22ad0230818e5c49a1bc6e7f99d490c, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3724818353899159455, guid: a22ad0230818e5c49a1bc6e7f99d490c, type: 3}
-      propertyPath: m_Constraints
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 3724818353899159455, guid: a22ad0230818e5c49a1bc6e7f99d490c, type: 3}
-      propertyPath: m_SleepingMode
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8200229180267520759, guid: a22ad0230818e5c49a1bc6e7f99d490c, type: 3}
