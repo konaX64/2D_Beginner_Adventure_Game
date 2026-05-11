@@ -7,5 +7,4 @@
         <ui:VisualElement name="CharacterPortrait" style="flex-grow: 0; background-image: url(&quot;project://database/Assets/Art/Ruby/UI/CharacterPortrait.png?fileID=21300000&amp;guid=374193bc7008fa34ab9b2bbca376937b&amp;type=3#CharacterPortrait&quot;); -unity-background-scale-mode: scale-to-fit; position: absolute; width: 110px; height: 159px; top: 51px; left: 36px;" />
     </ui:VisualElement>
     <ui:Instance template="NPCDialogue" name="NPCDialogue" style="flex-direction: column-reverse; left: 448px; top: 800px; right: 588px; bottom: 185px; position: absolute; width: 874px; height: 212px;" />
-    <ui:VisualElement style="flex-grow: 1; background-image: url(&quot;project://database/Assets/Art/Ruby/UI/NPCPortrait.png?fileID=2800000&amp;guid=520dfc803cded8c43854cf4275f96485&amp;type=3#NPCPortrait&quot;); position: absolute; left: 1082px; top: 821px; width: 174px; height: 165px;" />
 </ui:UXML>

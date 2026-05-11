@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 
 
 public class PlayerController : MonoBehaviour
@@ -21,6 +22,8 @@ public class PlayerController : MonoBehaviour
     public float timeInvincible = 2.0f;
     bool isInvincible;
     float damageCooldown;
+
+    bool isDead = false;
 
     // Variables related to Animation
     Animator animator;
@@ -46,6 +49,9 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (isDead)
+            return;
+
         move = MoveAction.ReadValue<Vector2>();
         //Debug.Log(move);
 
@@ -89,6 +95,9 @@ public class PlayerController : MonoBehaviour
     // FixedUpdate has the same call rate as the physics system 
     void FixedUpdate()
     {
+        if (isDead)
+            return;
+
         Vector2 position = (Vector2)rigidbody2d.position + move * speed * Time.deltaTime;
         rigidbody2d.MovePosition(position);
     }
@@ -108,7 +117,26 @@ public class PlayerController : MonoBehaviour
             animator.SetTrigger("Hit");
         }
         currentHealth = Mathf.Clamp(currentHealth + amount, 0, maxHealth);
+
         UIHandler.instance.SetHealthValue(currentHealth / (float)maxHealth);
+
+        if (currentHealth <= 0)
+        {
+            Die();
+        }
+    }
+
+    void Die()
+    {
+        isDead = true;
+
+        animator.SetFloat("Speed", 0);
+
+        // Chama Game Over
+        if (GameManager.Instance != null)
+        {
+            GameManager.Instance.GameOver();
+        }
     }
 
 
@@ -137,5 +165,10 @@ public class PlayerController : MonoBehaviour
     public void PlaySound(AudioClip clip)
     {
         audioSource.PlayOneShot(clip);
+    }
+
+    void OnDisable()
+    {
+        MoveAction.Disable();
     }
 }
